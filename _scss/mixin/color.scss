@@ -1,0 +1,63 @@
+@import "mixin/lib/material-colors";
+//
+// Color settting
+// ================================
+// @ Global variables from `settings.scss`
+//   $primary_color_name
+//   $secondary_color_name
+//
+// @ Color Names (material):
+//   Red, Pink, Purple, Deep Purple,
+//   Indigo, Blue, Light Blue, Cyan, Teal,
+//   Green, Light Green, Lime, Yellow, Amber,
+//   Orange, Deep Orange, Brown, Grey, Blue Grey
+//
+// @ Shade levels (material):
+//   50, 100, 200, 300, 400, 500, 600, 700,
+//   800, 900, 1000, A100, A200, A400, A700
+//
+// Sub Functions
+// ===============================
+//
+// getColor($name, $type)
+// -> $name: Theme color selection
+//      Primary, Secondary
+// -> $type: Shade name
+//      normal, light, dark
+//
+// getTextColor($shadeText, $light)
+// -> $shadeText: Text type
+//       Primary, Secondary, Icons,
+//       Disabled, Hint, Dividers
+// -> $light: background theme (light/dark)
+//       true, false
+//
+
+@function getColor($name, $type: normal) {
+  $colorMap: null;
+  @if $name == Primary {
+    $colorMap: map-get($palette, $primary_color_name);
+  } @else {
+    $colorMap: map-get($palette, $secondary_color_name);
+  }
+  @if $type == light {
+    @return map-get($colorMap, 200);
+  } @else if $type == dark {
+    @return map-get($colorMap, 700);
+  } @else {
+    @return map-get($colorMap, 500);
+  }
+}
+
+@function getTextColor($shadeText, $light: true) {
+  $color: null;
+  @if $light == true {
+    $color: Black;
+  }
+  @else {
+    $color: White;
+  }
+  $colorMap: map-get($palette, $color);
+  $result: map-get($colorMap, $shadeText);
+  @return $result;
+}

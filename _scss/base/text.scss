@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:400,700,900|Nanum+Gothic+Coding:400,700&subset=korean');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body {
+  font-family: 'Gothic A1', sans-serif;
+}
+p {
+  line-height: 1.5;
+}
+a {
+  background-color: transparent;
+  color: getColor(Primary, normal);
+  text-decoration: none;
+}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+b,
+strong {
+  font-weight: bolder;
+}
+div.highlighter-rouge {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+code.highlighter-rouge,
+kbd {
+  padding: 2px 4px;
+  font-family: 'Nanum Gothic Coding', monospace;
+  font-size: 90%;
+  background: getTextColor(Dividers);
+  color: getTextColor(Secondary);
+  border-radius: 2px;
+}
+kbd,
+samp {
+  font-weight: bold;
+  color: getTextColor(Primary, false);
+  background: getTextColor(Primary);
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+.icon {
+  font-family: 'Material Icons';
+  user-select: none;
+}

@@ -1,0 +1,58 @@
+# 기본 정보
+title: Jekyll.Webtextbook(노트)
+email: soma0sd@gmail.com
+author: soma0sd
+
+# URL 세팅
+url: "http://localhost:4000"
+baseurl: "/"
+docurl: "doc/"
+
+# Toc 세팅
+toc:
+  split: "|"
+
+# 애드센스 설정
+adsense:
+  content: >
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         data-adtest="on"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-3097185090136067"
+         data-ad-slot="5251277162"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+
+# 시스템 설정
+# ! 변경시 오작동 위험이 있습니다. !
+timezone: Asia/Seoul
+permalink: pretty
+encoding: UTF-8
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+
+sass:
+  sass_dir: _scss
+  style: compressed
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  toc_levels: '1'
+  parse_block_html: true
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1

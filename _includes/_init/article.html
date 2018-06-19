@@ -1,0 +1,26 @@
+{%- capture article_body -%}
+<div id="article-title">
+  {%- if docuThisTitle %}
+  {{ docuThisTitle }}
+  {%- else %}
+  {{ site.title }}
+  {%- endif %}
+</div>
+<div id="article-toc" markdown="1">
+<div class="title">
+바로가기
+<button class="close icon" onclick="toc_close()">clear</button>
+</div>
+  * 목차
+  {:toc}
+</div>
+{%- if site.adsense.content %}
+{{ site.adsense.content }}
+{%- endif %}
+<div id="article-body">
+  {{ page.content }}
+</div>
+{%- if site.adsense.content %}
+{{ site.adsense.content }}
+{%- endif %}
+{%- endcapture -%}

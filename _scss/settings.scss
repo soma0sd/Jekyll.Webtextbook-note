@@ -1,0 +1,42 @@
+//
+// Color Settting
+// ==============================================
+// @ Color Names (Material Color):
+//     Red, Pink, Purple, Deep Purple,
+//     Indigo, Blue, Light Blue, Cyan, Teal,
+//     Green, Light Green, Lime, Yellow, Amber,
+//     Orange, Deep Orange, Brown, Grey, Blue Grey
+//
+$primary_color_name: Indigo; // Contents highlight color
+$secondary_color_name: Teal; // Layout components color
+
+//
+// Layout Setting
+// ==============================================
+//
+$topbar_wraper_height_mobile: 3rem;
+$topbar_wraper_height_tablet: 2.5rem;
+$topbar_wraper_height_laptop: 2.5rem;
+
+$article_width_tablet: 550px;
+$sidebar_width_tablet: 256px;
+$toc_width_tablet: 210px;
+
+$article_width_laptop: 750px;
+
+//
+// Mediaquery Breakpoints (Width)
+// ==============================================
+// @ Breakpoint Abbreviation: apply style than point over
+//     xs: mobile (remove)
+//      s: Tablet
+//      m: Laptop - Small
+//      l: Laptop = Medium
+//     xl: Laptop = Large
+//
+$responsive_breakpoints_map: (
+  s:   600px,
+  m:  1024px,
+  l:  1440px,
+  xl: 1920px
+);

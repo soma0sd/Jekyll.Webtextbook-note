@@ -1,0 +1,52 @@
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  border-color: getTextColor(Dividers);
+}
+ul,
+ol {
+  display: block;
+  margin: 1em 0;
+  padding: 0 0 0 1.8em;
+  line-height: 1.5;
+  & & {
+    margin: 0;
+  }
+}
+ul {
+  list-style-type: disc;
+}
+ol {
+  list-style-type: decimal;
+}
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+blockquote {
+  margin: .5em 1em;
+  padding: 0.1em 0 0.1em 0.8em;
+  border-left: .5em solid getColor(Primary, light);
+  color: getTextColor(Secondary);
+}
+table {
+  box-sizing: border-box;
+  margin: .5em;
+  width: calc(100% - 1em);
+  border-collapse: collapse;
+  border-radius: 0.2em;
+  overflow: hidden;
+  @include shadow(1);
+  th {
+    // border-top: 0.1px solid getTextColor(Disabled);
+  }
+  th, td {
+    padding: .7em .4em;
+    border-bottom: 1px solid rgba(#000, 0.1);
+  }
+  tr > th:first-child,
+  tr > td:first-child {
+    border-right: 1px solid rgba(#000, 0.1);
+  }
+}

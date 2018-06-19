@@ -1,0 +1,18 @@
+//
+// MediaQuery for Responsive Layout
+// ==============================================
+// @ media($key)
+// -> $key: select query
+//      s, m, l, xl
+// >> usage
+//    @include media($key) {
+//       styles...
+//    }
+//
+
+@mixin media($key) {
+  $query: map-get($responsive_breakpoints_map, $key);
+  @media (min-width: #{$query}) {
+    @content;
+  }
+}

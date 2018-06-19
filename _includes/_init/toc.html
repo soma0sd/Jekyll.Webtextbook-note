@@ -1,0 +1,75 @@
+{% comment -%}
+docsTocListHTML
+
+docuThisTitle
+docuThisHref
+docuNavTitle
+docuNavHref
+
+docuNextTitle
+docuNextHref
+
+docuPrevTitle
+docuPrevHref
+
+{% endcomment -%}
+{% assign docsTocListHTML = "" -%}
+{% assign _tocHrefList = "" -%}
+{% assign _tocTitleList = "" -%}
+{% assign _index = 0 -%}
+{% for item in site.data.toc -%}
+{%   assign _index = _index |plus: 1 -%}
+{%   assign _chapterItems = item.chapter |split: site.toc.split -%}
+{%   assign _chapterTitle = _chapterItems[0] -%}
+{%   assign _chapterFName = _chapterItems[1] -%}
+{%   assign _chapterURL   = _chapterFName |prepend: site.docurl |prepend: "/" |append: "/" -%}
+{%   assign _chapterHref  = _chapterURL |absolute_url -%}
+{%   assign _tocTitleList = _tocTitleList |append: _chapterTitle |append: "||" -%}
+{%   assign _tocHrefList = _tocHrefList |append: _chapterHref |append: "||" -%}
+{%   assign _class = "list-item" -%}
+{%   if _chapterURL == page.url -%}
+{%     assign indexTOC = _index |ceil -%}
+{%     assign _class = _class |append: " active" -%}
+{%   endif -%}
+{% capture _list %}
+<li class="{{_class}}"><a class="{{_class}}" href="{{_chapterHref }}">{{_chapterTitle}}</a></li>{% endcapture %}
+{% assign docsTocListHTML = docsTocListHTML |append: _list -%}
+{%   for subitem in item.sub -%}
+{%     assign _index = _index |plus: 1 -%}
+{%     assign _subItems = subitem |split: site.toc.split -%}
+{%     assign _subTitle = _subItems[0] -%}
+{%     assign _subFName = _subItems[1] -%}
+{%     assign _subURL = _chapterURL |append: _subFName |append: "/" -%}
+{%     assign _subHref = _subURL |absolute_url -%}
+{%     assign _tocTitleList = _tocTitleList |append: _subTitle |append: "||" -%}
+{%     assign _tocHrefList = _tocHrefList |append: _subHref |append: "||" -%}
+{%     assign _class = "list-item sub" -%}
+{%     if _subURL == page.url -%}
+{%       assign docuNavTitle = _chapterTitle %}
+{%       assign docuNavHref  = _chapterHref %}
+{%       assign indexTOC = _index |ceil -%}
+{%       assign _class = _class |append: " active" -%}
+{%     endif -%}
+{% capture _list %}
+<li class="{{_class}}"><a class="{{_class}}" href="{{_subHref }}">{{_subTitle}}</a></li>{% endcapture %}
+{% assign docsTocListHTML = docsTocListHTML |append: _list -%}
+{%   endfor -%}
+{% endfor -%}
+{% assign _tocTitleList = _tocTitleList |split: "||" -%}
+{% assign _tocHrefList = _tocHrefList |split: "||" -%}
+{% assign indexTOCnow  = indexTOC    |minus: 1 -%}
+{% assign indexTOCnext = indexTOCnow |plus: 1 -%}
+{% assign indexTOCprev = indexTOCnow |minus: 1 -%}
+{% assign maxTOC = _tocTitleList |size |minus: 1 -%}
+{% if indexTOCnow >= 0 %}
+{%   assign docuThisTitle = _tocTitleList |slice: indexTOCnow -%}
+{%   assign docuThisHref  = _tocHrefList  |slice: indexTOCnow -%}
+{% endif %}
+{% if indexTOCnow >= 0 and indexTOCnow < maxTOC %}
+{% assign docuNextTitle = _tocTitleList |slice: indexTOCnext -%}
+{% assign docuNextHref  = _tocHrefList  |slice: indexTOCnext -%}
+{% endif %}
+{% if indexTOCnow >= 1 %}
+{% assign docuPrevTitle = _tocTitleList |slice: indexTOCprev -%}
+{% assign docuPrevHref  = _tocHrefList  |slice: indexTOCprev -%}
+{% endif %}

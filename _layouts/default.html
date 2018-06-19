@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+{%- include init.html -%}
+{%- assign site_url = "" | absolute_url %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="icon" href="">
+  <link rel="stylesheet" type="text/css" href="{{ "css/style.css" | absolute_url }}">
+{%- if docuThisTitle %}
+  <title>{{site.title}}::{{docuThisTitle}}</title>
+{%- else %}
+  <title>{{site.title}}</title>
+{%- endif %}
+</head>
+<body>
+  <div id="topbar-outer">
+    <div id="topbar-inner">
+      <button class="nav icon" onclick="nav_open()">chrome_reader_mode</button>
+      <button class="toc icon" onclick="toc_open()">toc</button>
+      <span class="title">
+      {%- if docuThisTitle and docuNavTitle %}
+        <a class="name-page" href="{{site_url}}">{{site.title}}</a>
+        <a class="name-section" href="{{docuNavHref}}">{{docuNavTitle}}</a>
+        <a class="name-doc">{{docuThisTitle}}</a>
+      {%- elsif docuThisTitle  %}
+        <a class="name-page" href="{{site_url}}">{{site.title}}</a>
+        <a class="name-doc">{{docuThisTitle}}</a>
+      {%- else %}
+        <a class="name-doc">{{site.title}}</a>
+      {%- endif %}
+      </span>
+    </div>
+  </div>
+  <div id="nav-outer">
+    <div id="nav-inner">
+      <div id="nav-title">
+        <a href="{{site_url}}">{{site.title}}</a>
+        <button class="close icon" onclick="nav_close()">clear</button>
+      </div>
+      <ul id="nav-toc">
+        {{docsTocListHTML}}
+      </ul>
+    </div>
+  </div>
+  <div id="content-outer">
+    <div id="content-inner">
+      {{ article_body | markdownify }}
+      <div id="content-nav">
+        {%- if docuPrevTitle %}
+        <a class="btn nav prev" href="{{docuPrevHref}}">
+          <span class="icon">arrow_back_ios</span>
+          <span class="title">{{docuPrevTitle}}</span>
+        </a>
+        {%- endif %}
+        {%- if docuNextTitle %}
+        <a class="btn nav next" href="{{docuNextHref}}">
+          <span class="title">{{docuNextTitle}}</span>
+          <span class="icon">arrow_forward_ios</span>
+        </a>
+        {%- endif %}
+      </div>
+    </div>
+    <div id="footer-outer">
+      <div id="footer-inner">
+        <div id="footer-contact">
+          {{site.email}}
+        </div>
+        <div id="footer-copyright">
+          Copyright <i>{{site.author}}</i> All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="{{ "js/jquery-3.3.1.min.js" | absolute_url }}"></script>
+<script type="text/javascript" src="{{ "js/jquery.scrollbar.min.js" | absolute_url }}"></script>
+<script type="text/javascript" src="{{ "js/function.js" | absolute_url }}"></script>
+</html>

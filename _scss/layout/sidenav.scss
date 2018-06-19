@@ -1,0 +1,120 @@
+#nav-outer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: calc(-100vw);
+  width: calc(100vw - 56px);
+  z-index: 15;
+  background: #FFF;
+  transition: left 0.2s ease-out;
+  @include shadow(3);
+  @include media(s){
+    left: calc(-#{$sidebar_width_tablet} - 15px);
+    width: $sidebar_width_tablet;
+  }
+  @include media(m){
+    left: 0;
+    z-index: 8;
+    @include shadow(1);
+  }
+  &.active {
+    left: 0;
+  }
+  a {
+    color: getTextColor(Primary);
+    padding-left: 1rem;
+  }
+}
+#nav-title {
+  height: $topbar_wraper_height_mobile;
+  line-height: $topbar_wraper_height_mobile;
+  @include shadow(1);
+  @include media(s){
+    height: $topbar_wraper_height_tablet;
+    line-height: $topbar_wraper_height_tablet;
+  }
+  @include media(m){
+    height: $topbar_wraper_height_laptop;
+    line-height: $topbar_wraper_height_laptop;
+  }
+  a {
+    color: getColor(Secondary, dark);
+    font-weight: bold;
+    font-size: 1.6rem;
+    @include media(s) {
+      font-size: $topbar_wraper_height_tablet * 2 / 5;
+      line-height: $topbar_wraper_height_tablet;
+    }
+    @include media(m) {
+      font-size: $topbar_wraper_height_laptop * 2 / 5;
+      line-height: $topbar_wraper_height_laptop;
+    }
+  }
+  button.close {
+    float: right;
+    font-size: 1.6rem;
+    background: getColor(Secondary, dark);
+    color: getTextColor(Primary, false);
+    height: $topbar_wraper_height_mobile;
+    width: $topbar_wraper_height_mobile;
+    line-height: $topbar_wraper_height_mobile;
+    @include media(s){
+      float: left;
+      height: $topbar_wraper_height_tablet;
+      width: $topbar_wraper_height_tablet;
+      line-height: $topbar_wraper_height_tablet;
+    }
+    @include media(m){
+      height: $topbar_wraper_height_laptop;
+      width: $topbar_wraper_height_laptop;
+      line-height: $topbar_wraper_height_laptop;
+    }
+  }
+}
+#nav-inner {
+  height: 100%;
+}
+#nav-toc {
+  margin: 0;
+  padding: 0;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  list-style: none;
+  max-height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: $topbar_wraper_height_mobile * 2;
+  @include media(s){
+    padding-bottom: $topbar_wraper_height_tablet;
+  }
+  @include media(m){
+    padding-bottom: $topbar_wraper_height_laptop;
+  }
+  a {
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  a.sub {
+    font-weight: normal;
+    padding-left: 1.8rem;
+  }
+  a.active {
+    background: getColor(Secondary);
+    color: getTextColor(Primary, false);
+    font-weight: bold;
+  }
+  a:hover {
+    background: getColor(Secondary, light);
+  }
+}
+#nav-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(#000, 0.4);
+  z-index: 14;
+}

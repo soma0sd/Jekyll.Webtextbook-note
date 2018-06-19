@@ -1,0 +1,21 @@
+#footer-outer {
+  margin-top: 2rem;
+}
+#footer-inner {
+  background: getColor(Secondary, light);
+  color: getTextColor(Primary);
+  #footer-contact {
+    text-align: center;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    font-size: 0.8rem;
+  }
+  #footer-copyright {
+    color: getTextColor(Primary, false);
+    background: getColor(Secondary, dark);
+    text-align: center;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,16 @@
+@import "mixin/lib/material-shadow";
+
+@mixin shadow($z-value) {
+  $umbra-z-value: map-get($umbra-map, $z-value);
+  $penumbra-z-value: map-get($penumbra-map, $z-value);
+  $ambient-z-value: map-get($ambient-map, $z-value);
+
+  $umbra-color: rgba(black, .2);
+  $penumbra-color: rgba(black, .14);
+  $ambient-color: rgba(black, .12);
+
+  box-shadow:
+    #{"#{$umbra-z-value} #{$umbra-color}"},
+    #{"#{$penumbra-z-value} #{$penumbra-color}"},
+    #{$ambient-z-value} $ambient-color;
+}
