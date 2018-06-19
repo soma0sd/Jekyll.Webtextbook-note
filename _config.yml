@@ -4,7 +4,7 @@ email: soma0sd@gmail.com
 author: soma0sd
 
 # URL 세팅
-url: "soma0sd.github.io"
+url: "https://soma0sd.github.io"
 baseurl: "/Jekyll.Webtextbook-note"
 docurl: "doc/"
 
