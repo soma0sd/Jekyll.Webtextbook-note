@@ -4,8 +4,8 @@ email: soma0sd@gmail.com
 author: soma0sd
 
 # URL 세팅
-url: "http://localhost:4000"
-baseurl: "/"
+url: "soma0sd.github.io"
+baseurl: "/Jekyll.Webtextbook-note"
 docurl: "doc/"
 
 # Toc 세팅
