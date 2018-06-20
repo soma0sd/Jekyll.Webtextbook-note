@@ -1,3 +1,4 @@
 - chapter: 뼈대|frame
   sub:
-    - 빌드 설정|build-settings
+    - HTML-템플릿 제작|html-template
+    - Liquid-요소 채우기|liquid-content
