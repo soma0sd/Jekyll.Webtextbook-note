@@ -1,4 +1,6 @@
-- chapter: 뼈대|frame
+- chapter: 구조|frame
   sub:
     - HTML-템플릿 제작|html-template
     - Liquid-요소 채우기|liquid-content
+    - Jekyll-사이트 설정|jekyll-config
+  
