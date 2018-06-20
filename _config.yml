@@ -32,7 +32,10 @@ adsense:
 timezone: Asia/Seoul
 permalink: pretty
 encoding: UTF-8
+markdown: kramdown
+highlighter: rouge
 
+# 기본값 설정
 defaults:
   -
     scope:
@@ -40,12 +43,11 @@ defaults:
     values:
       layout: "default"
 
+# 플러그인 설정
 sass:
   sass_dir: _scss
   style: compressed
 
-markdown: kramdown
-highlighter: rouge
 kramdown:
   toc_levels: '1'
   parse_block_html: true
