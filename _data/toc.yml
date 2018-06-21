@@ -3,7 +3,9 @@
     - "HTML:템플릿 제작|html-template"
     - "Liquid:요소 채우기|liquid-content"
     - "Jekyll:사이트 설정|jekyll-config"
+    - "HTML:메타태그|html-meta"
 
 - chapter: "추가기능|extra"
   sub:
     - "XML:사이트맵|sitemap"
+    - "CSS:클래스|classes"
