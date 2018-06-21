@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{%- include _init/toc.html -%}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ ""| absolute_url }}</loc>
+  </url>
+{%- for href in _tocHrefList %}
+  <url>
+    <loc>{{href}}</loc>
+  </url>
+{%- endfor %}
+</urlset>
