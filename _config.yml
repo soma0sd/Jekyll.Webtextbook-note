@@ -15,16 +15,7 @@ toc:
 # 애드센스 설정
 adsense:
   content: >
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-layout="in-article"
-         data-ad-format="fluid"
-         data-ad-client="ca-pub-3097185090136067"
-         data-ad-slot="5251277162"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-3097185090136067" data-ad-slot="5251277162"></ins>
 
 
 # 시스템 설정

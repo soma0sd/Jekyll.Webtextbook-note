@@ -15,12 +15,17 @@
   {:toc}
 </div>
 {%- if site.adsense.content %}
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 {{ site.adsense.content }}
 {%- endif %}
 <div id="article-body">
   {{ page.content }}
 </div>
 {%- if site.adsense.content %}
-{{ site.adsense.content }}
+<!-- Jekyll.Webtextbook-note-contents-bot -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3097185090136067" data-ad-slot="5027221356" data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 {%- endif %}
 {%- endcapture -%}
