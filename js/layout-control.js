@@ -1,7 +1,5 @@
-//
-// BUTTON ACTIONS
+// Button callback Action
 // ==============================================
-//
 function nav_open(){
   $("#nav-outer").addClass('active');
   $("#nav-outer").after('<div id="nav-overlay" onClick="nav_close()"></div>');
@@ -17,26 +15,18 @@ function toc_close(){
   $("#article-toc").removeClass('active');
 }
 
-//
-// THEME EVENTS
+// Section Shortcuts
 // ==============================================
-//
 var $toc_item = $("#markdown-toc a");
-
+var topber_height = $("#topbar-outer").height();
+var is_scrolling;
 $toc_item.click(function(e) {
   e.preventDefault();
   $("#article-toc").removeClass('active');
   let target_top = $($(this).attr("href")).offset().top;
-  let scroll_to = target_top - topber_height ;
+  let scroll_to = target_top - topber_height;
   $("html, body").stop().animate({scrollTop: scroll_to}, 300, 'swing');
 });
-
-//
-// DOCUMENT EVENTS
-// ==============================================
-//
-var topber_height = $("#topbar-outer").height();
-var is_scrolling;
 
 function sub_scrollspy(){
   let thisTop = $(document).scrollTop()+topber_height+1;
@@ -57,33 +47,9 @@ function sub_scrollspy(){
     }
   });
 }
-
 $(document).ready(function(){
   sub_scrollspy();
-  $('.reversefootnote').each(function(index, el) {
-    let sup_txt = $(this).find('sup').html();
-    if(sup_txt) {
-      $(this).html('<span class="icon">vertical_align_top</span><sup>' + sup_txt + '</sup>');
-    } else {
-      $(this).html('<span class="icon">vertical_align_top</span>');
-    }
-  });
 });
-
-var prevScrollpos = window.pageYOffset;
-$(window).scroll(function(event){
-  let currentScrollPos = window.pageYOffset;
-  is_scrolling = true;
-  if (prevScrollpos == 0) {
-    $("#topbar-outer").removeClass('hide');
-  } else if (prevScrollpos > currentScrollPos){
-    $("#topbar-outer").removeClass('hide');
-  } else {
-    $("#topbar-outer").addClass('hide');
-  }
-  prevScrollpos = currentScrollPos;
-});
-
 setInterval(function(){
   if(is_scrolling){
     sub_scrollspy();
