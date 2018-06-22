@@ -1,5 +1,5 @@
 _site
-backup
 .sass-cache
 .jekyll-metadata
+.tern-project
 *.dev.*
