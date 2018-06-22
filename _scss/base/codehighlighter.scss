@@ -1,8 +1,11 @@
 
 div.highlighter-rouge {
+  left: 0;
+  transition: left 0.05s;
   .rouge-table {
     width: auto;
     min-width: calc(100% - 1em);
+    box-shadow: unset;
   }
   .rouge-gutter {
     width: 30px;
@@ -18,23 +21,38 @@ div.highlighter-rouge {
     font-weight: bold;
   }
   .rouge-code {
+    user-select: none;
     display: table-cell;
     padding-left: 5px;
-    pre {
-      min-width: calc(100vw - 2rem - 60px);
-      @include media(s){
-        min-width: calc(#{$article_width_tablet} - 3rem - 56px);
-      }
-      @include media(l){
-        min-width: calc(#{$article_width_laptop} - 2rem - 56px);
-      }
-    }
+    border-bottom: unset;
   }
   pre {
     margin: 0;
   }
 }
-
+.code-wrap {
+  position: relative;
+  overflow: hidden;
+  @include shadow(1);
+  .background {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 10px;
+    background: rgba(getColor(Primary), 0.1);
+    border-radius: .2rem;
+  }
+  .bar {
+    position: absolute;
+    bottom: 0; top: 0;
+    left: 0;
+    width: 50px;
+    background: rgba(getColor(Primary), 0.5);
+    border-radius: .2rem;
+    transition: left 0.05s;
+  }
+}
 .highlight {
   .hll { background-color: #ffffcc }
   .c { color: #008800; font-style: italic } /* Comment */
