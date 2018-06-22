@@ -81,7 +81,6 @@
   box-sizing: border-box;
   list-style: none;
   max-height: 100%;
-  overflow-y: scroll;
   overflow-x: hidden;
   padding-bottom: $topbar_wraper_height_mobile * 2;
   @include media(s){

@@ -17,9 +17,14 @@
 {%- endfor %}
 <meta name="author" content="{{site.author}}">
 <meta name="description" content="{{meta_description}}">
+{%- if docuThisTitle %}
 <meta property="og:title" content="{{docuThisTitle}}">
-<meta property="og:site_name" content="{{site.title}}">
 <meta property="og:url" content="{{docuThisHref}}">
+{%- else %}
+<meta property="og:title" content="{{site.title}}">
+<meta property="og:url" content="{{""|absolute_url}}">
+{%- endif %}
+<meta property="og:site_name" content="{{site.title}}">
 <meta property="og:description" content="{{meta_description}}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
