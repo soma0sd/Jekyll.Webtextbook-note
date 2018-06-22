@@ -60,8 +60,6 @@ function sub_scrollspy(){
 
 $(document).ready(function(){
   sub_scrollspy();
-  $('div.highlighter-rouge').scrollbar({ });
-  $('#nav-toc').scrollbar({ });
   $('.reversefootnote').each(function(index, el) {
     let sup_txt = $(this).find('sup').html();
     if(sup_txt) {
