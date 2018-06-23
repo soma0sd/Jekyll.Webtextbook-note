@@ -5,6 +5,7 @@
     - "Jekyll:사이트 설정|jekyll-config"
     - "HTML:메타태그|html-meta"
 
+- chapter: "스타일|style"
 - chapter: "추가기능|extra"
   sub:
     - "XML:사이트맵|sitemap"
