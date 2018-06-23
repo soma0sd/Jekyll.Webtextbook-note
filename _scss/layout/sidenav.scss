@@ -40,9 +40,9 @@
   a {
     color: getColor(Secondary, dark);
     font-weight: bold;
-    font-size: 1.6rem;
+    font-size: $topbar_wraper_height_mobile * 1 / 3;
     @include media(s) {
-      font-size: $topbar_wraper_height_tablet * 2 / 5;
+      font-size: $topbar_wraper_height_tablet * 1 / 3;
       line-height: $topbar_wraper_height_tablet;
     }
     @include media(m) {
