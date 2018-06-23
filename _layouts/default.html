@@ -48,6 +48,10 @@
   </div>
   <div id="content-outer">
     <div id="content-inner">
+      {%- if site.adsense.content %}
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      {{ site.adsense.content }}
+      {%- endif %}
       {{ article_body | markdownify }}
       <div id="content-nav">
         {%- if docuPrevTitle %}
@@ -63,6 +67,16 @@
         </a>
         {%- endif %}
       </div>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Jekyll.Webtextbook-note-contents-bot -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3097185090136067"
+           data-ad-slot="5027221356"
+           data-ad-format="link"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
     <div id="footer-outer">
       <div id="footer-inner">
