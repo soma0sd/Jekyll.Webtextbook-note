@@ -59,7 +59,7 @@ Liquid 언어는 Jekyll의 변환 대상이 되는 모든 파일에 적용됩니
 | prepend | 앞에 붙임 | "CDE" \| prepend: "AB" |
 | append | 뒤에 붙임 | "ABC" \| append: "DE" |
 | absolute_url | URL 절대위치를 앞에 붙임 | "style.css" \| absolute_url |
-| markdownify | 마크다운을 HTML로 변환 | "**bold** text" \| markdownify |
+| markdownify | 마크다운을 HTML로 변환 | "\*\*bold\*\* text" \| markdownify |
 
 ## Jekyll 내장 변수
 Jekyll은 템플릿을 만들때 사용할 수 있는 내장 변수를 제공합니다.
