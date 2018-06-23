@@ -1,24 +1,5 @@
-function codeSCR(){
-  $("div.highlighter-rouge").each(function(){
-    $(this).wrap('<div class="code-wrap"></div>');
-    $(this).css("position", "absolute");
-    let $wrapper = $(this).parent(".code-wrap");
-    $wrapper.append('<button class="copy-code icon" onclick="copy_code(this)">file_copy</div>');
-    if($wrapper.width() < $(this).width()){
-      $wrapper.height($(this).height() + 15);
-      $wrapper.attr("inner-width", $(this).width());
-      $wrapper.attr("scr-x", "on");
-      $wrapper.append('<div class="background"><div class="bar"></div></div>');
-      let $scr_back = $wrapper.children('.background');
-      let $scr_bar  = $scr_back.children('.bar');
-      let scr_bar_width = $scr_back.width() * $wrapper.width() / $(this).width();
-      $scr_bar.width(scr_bar_width);
-    } else {
-      $wrapper.height($(this).height());
-      $wrapper.attr("scr-x", "off");
-    }
-  });
-}
+// button action
+// ======================
 function copy_code(elem){
   let $temp = $("<textarea>");
   let str = $(elem).parent(".code-wrap").find('td.rouge-code').html();
@@ -27,68 +8,96 @@ function copy_code(elem){
   document.execCommand("copy");
   $temp.remove();
 }
-$(document).ready(function(){codeSCR()});
+
+// sub function
+// ======================
+function codeblock_init(elem){
+  // eleme: div.highlighter-rouge single element
+  $(elem).wrap('<div class="code-wrap"></div>');
+  let $wrapper = $(elem).parent('.code-wrap');
+  $wrapper.append('<button class="copy-code icon" onclick="copy_code(this)">file_copy</div>');
+  $wrapper.append('<div class="background"><div class="bar"></div></div>');
+}
+function codeblock_bar_resize(elem){
+  // eleme: div.highlighter-rouge single element
+  let $wrapper = $(elem).parent('.code-wrap');
+  let $scr_back = $wrapper.children('.background');
+  let $scr_bar  = $scr_back.children('.bar');
+  if($wrapper.width() < $(elem).width()){
+    $wrapper.attr("scr-x", "on");
+    $wrapper.height($(elem).height() + 15);
+    $scr_back.show();
+  } else {
+    $wrapper.height($(elem).height());
+    $wrapper.attr("scr-x", "off");
+    $scr_back.hide();
+  }
+  if($wrapper.attr("scr-x") == "off"){return false}
+  let scr_bar_width = $scr_back.width() * $wrapper.width() / ($(elem).width() + 25);
+  $scr_bar.width(scr_bar_width);
+}
+
 var isDragging = false;
 var startPointX;
 var isOnDiv = false;
+function codeblock_on_move(elem, dx){
+  // elem: div.highlighter-rouge single element
+  let $wrapper = $(elem).parent('.code-wrap');
+  if($wrapper.attr("scr-x") != "on"){return false}
+  if(!isDragging || !isOnDiv){return false}
+  let $scr_back = $wrapper.children('.background');
+  let $scr_bar  = $scr_back.children('.bar');
+  let scr_margin  = $scr_back.width() - $scr_bar.width();
+  let code_margin = $wrapper.width() - $(elem).width() - 25;
+  let code_pre_move = $(elem).position().left;
+  let code_move = code_pre_move + dx;
+  if (code_move < code_margin){
+    code_move = code_margin;
+  } else if (code_move > 0) {
+    code_move = 0;
+  }
+  let bar_move = scr_margin * code_move / code_margin;
+  $scr_bar.css("left", bar_move);
+  $(elem).css("left", code_move);
+}
+
+// events
+// ======================
+$(document).ready(function(){
+  $("div.highlighter-rouge").each(function(){
+    codeblock_init(this);
+    codeblock_bar_resize(this);
+  });
+});
+$(window).resize(function(){
+  $("div.highlighter-rouge").each(function(){
+    codeblock_bar_resize(this);
+  });
+});
+
+
 $("div.highlighter-rouge")
-.mouseenter(function(){
-  isOnDiv=true;
-})
+.mouseenter(function(){isOnDiv=true;})
 .mouseleave(function(){isOnDiv=false;})
 .mousedown(function(event){
-    isDragging = true;
-    startPointX = event.pageX;
+  isDragging = true;
+  startPointX = event.pageX;
 })
 .mousemove(function(event){
-  if(isDragging && isOnDiv){
-    let move = Math.round((event.pageX - startPointX) * 1.5);
-    let maxMove = $(this).parent('.code-wrap').width() - $(this).width() - 15;
-    if(move >= 0){
-      move = 0;
-    } else if (move <= maxMove ) {
-      move = maxMove;
-    }
-    let $wrapper = $(this).parent(".code-wrap")
-    let $scr_back = $wrapper.children('.background');
-    let $scr_bar = $scr_back.children('.bar');
-    let div_margin = $wrapper.attr("inner-width") - $wrapper.width() +15;
-    let scr_margin = $scr_back.width() - $scr_bar.width();
-    let scr_move = scr_margin * move / div_margin;
-    $(this).css("left", move);
-    $scr_bar.css("left", -scr_move);
-  } else {
-    isDragging = false;
-  }
+  codeblock_on_move(this, event.pageX - startPointX)
 })
 .mouseup(function() {
   isDragging = false;
 })
 .bind("touchstart", function(event){
+  isOnDiv = true;
   isDragging = true;
   startPointX = event.originalEvent.touches[0].pageX;
 })
 .bind("touchmove", function(event){
-  if(isDragging){
-    let move = Math.round((event.originalEvent.touches[0].pageX - startPointX) * 1.5);
-    let maxMove = $(this).parent('.code-wrap').width() - $(this).width() - 15;
-    if(move >= 0){
-      move = 0;
-    } else if (move <= maxMove ) {
-      move = maxMove;
-    }
-    let $wrapper = $(this).parent(".code-wrap")
-    let $scr_back = $wrapper.children('.background');
-    let $scr_bar = $scr_back.children('.bar');
-    let div_margin = $wrapper.attr("inner-width") - $wrapper.width() +15;
-    let scr_margin = $scr_back.width() - $scr_bar.width();
-    let scr_move = scr_margin * move / div_margin;
-    $(this).css("left", move);
-    $scr_bar.css("left", -scr_move);
-  } else {
-    isDragging = false;
-  }
+  codeblock_on_move(this, event.originalEvent.touches[0].pageX - startPointX)
 })
 .bind("touchend", function(event){
   isDragging = false;
+  isOnDiv = false;
 });
