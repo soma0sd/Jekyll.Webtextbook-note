@@ -52,6 +52,36 @@ div.highlighter-rouge {
     border-radius: .2rem;
     transition: left 0.05s;
   }
+  button.copy-code {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: getColor(Secondary, light);
+    font-size: 1.7em;
+    padding: 0.3em;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+  }
+  button.copy-code:hover:after {
+    content: "복사";
+    position: absolute;
+    bottom: -0.4em;
+    right: 0.3em;
+    left: 0.3em;
+    height: 1.2em;
+    line-height: 1.2em;
+    text-align: center;
+    vertical-align: middle;
+    background: rgba(#000, 0.5);
+    color: getTextColor(Primary, false);
+    border-radius: 2px;
+    font-size: 0.5em;
+  }
+  &:hover button.copy-code {
+    opacity: 1;
+  }
 }
 .highlight {
   .hll { background-color: #ffffcc }
