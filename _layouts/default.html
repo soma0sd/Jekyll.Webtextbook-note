@@ -49,16 +49,6 @@
   <div id="content-outer">
     <div id="content-inner">
       {{ article_body | markdownify }}
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Jekyll.Webtextbook-note-contents-bot -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-3097185090136067"
-           data-ad-slot="5027221356"
-           data-ad-format="link"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
       <div id="content-nav">
         {%- if docuPrevTitle %}
         <a class="btn nav prev" href="{{docuPrevHref}}">
@@ -73,6 +63,10 @@
         </a>
         {%- endif %}
       </div>
+      {%- if site.adsense.content %}
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      {{ site.adsense.content }}
+      {%- endif %}
     </div>
     <div id="footer-outer">
       <div id="footer-inner">
