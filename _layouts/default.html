@@ -10,6 +10,9 @@
   <link rel="icon" href="{{ "favicon.ico" | absolute_url }}">
   <link rel="stylesheet" href="{{ "css/style.css" | absolute_url }}">
   <script src="{{ "js/jquery-3.3.1.min.js" | absolute_url }}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-alpha/katex.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-alpha/katex.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-alpha/contrib/auto-render.min.js"></script>
 {%- if docuThisTitle %}
   <title>{{site.title}}::{{docuThisTitle}}</title>
 {%- else %}
@@ -90,8 +93,9 @@
     </div>
   </div>
 </body>
-<script async src="{{ "js/codeblock.js" | absolute_url }}"></script>
+<script async src="{{ "js/jQuery.S0.scrollbar.js" | absolute_url }}"></script>
 <script async src="{{ "js/document.js" | absolute_url }}"></script>
 <script async src="{{ "js/layout-topbar.js" | absolute_url }}"></script>
 <script async src="{{ "js/layout-control.js" | absolute_url }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-alpha/contrib/mathtex-script-type.min.js"></script>
 </html>
