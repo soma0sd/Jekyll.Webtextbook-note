@@ -7,8 +7,10 @@
 
 - chapter: "스타일|style"
   sub:
-    - "SCSS|scss"
+    - "문서|document"
+
 - chapter: "추가기능|extra"
   sub:
     - "XML:사이트맵|sitemap"
     - "CSS:클래스|classes"
+    - "JS:스크롤 박스|scroll-box"
